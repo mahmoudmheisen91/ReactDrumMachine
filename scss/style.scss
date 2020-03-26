@@ -36,6 +36,14 @@ footer {
   font-size: 1.15rem;
 }
 
+.drum-pad {
+  user-select: none;
+  // border: 1px solid black;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+}
+
 // #markdown {
 //   display: grid;
 //   grid-template-columns: 1fr 1fr;
