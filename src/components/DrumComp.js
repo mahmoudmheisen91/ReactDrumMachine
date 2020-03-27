@@ -88,6 +88,7 @@ class PadComp extends React.Component {
 
   playSound() {
     let sound = document.getElementById(this.props.keyTrigger);
+    sound.volume = this.props.volume;
     sound.currentTime = 0;
     sound.play();
     this.props.display(this.props.id);
@@ -120,6 +121,7 @@ let PadBankComp = props => {
         id={item.id}
         url={item.url}
         display={props.display}
+        volume={props.volume}
       />
     );
   });
@@ -127,16 +129,30 @@ let PadBankComp = props => {
 };
 
 let ControlComp = props => {
-  return <div id="control"></div>;
+  return (
+    <div id="control">
+      <input
+        id="volume"
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        value={props.volume}
+        onChange={props.adjustVolume}
+      />
+    </div>
+  );
 };
 
 class DrumController extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      display: "..."
+      display: "...",
+      volume: 0.28
     };
     this.display = this.display.bind(this);
+    this.adjustVolume = this.adjustVolume.bind(this);
   }
 
   display(text) {
@@ -145,12 +161,21 @@ class DrumController extends React.Component {
     });
   }
 
+  adjustVolume(event) {
+    this.setState({
+      volume: event.target.value
+    });
+  }
+
   render() {
     return (
       <div id="drum-machine">
         <DisplayComp display={this.state.display} />
-        <PadBankComp display={this.display} />
-        <ControlComp />
+        <PadBankComp display={this.display} volume={this.state.volume} />
+        <ControlComp
+          volume={this.state.volume}
+          adjustVolume={this.adjustVolume}
+        />
       </div>
     );
   }
