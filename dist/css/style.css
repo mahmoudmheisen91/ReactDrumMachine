@@ -35,12 +35,119 @@ footer {
   font-size: 1.15rem;
 }
 
+#drum-machine {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 30% 40% 30%;
+      grid-template-columns: 30% 40% 30%;
+  -ms-grid-rows: 10% 20% 20% 50%;
+      grid-template-rows: 10% 20% 20% 50%;
+  grid-gap: 5px;
+  margin: 40px 0;
+}
+
+#display {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / span 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / span 1;
+  text-align: center;
+  padding: 20px;
+  background-color: #9780ff;
+  font-weight: bold;
+  border-radius: 20px;
+  color: #fffb0a;
+}
+
+#control {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3 / span 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / span 1;
+}
+
+#volume {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #ffc1c1;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+
+#volume:hover {
+  opacity: 1;
+}
+
+#volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #ff2a2a;
+  cursor: pointer;
+}
+
+#volume::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #ff2a2a;
+  cursor: pointer;
+}
+
+#bank {
+  -ms-grid-row: 4;
+  -ms-grid-row-span: 1;
+  grid-row: 4 / span 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / span 1;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[3];
+      grid-template-columns: repeat(3, auto);
+  -ms-grid-rows: (auto)[3];
+      grid-template-rows: repeat(3, auto);
+}
+
 .drum-pad {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
   cursor: pointer;
-  width: 50px;
-  height: 50px;
+  width: 100%;
+  height: 40px;
+  font-weight: bold;
+  background-color: #9780ff;
+  border-radius: 10px;
+}
+
+.drum-pad:focus {
+  outline: none;
+}
+
+.drum-pad:hover {
+  background-color: #ff2a2a;
+}
+
+@media screen and (max-width: 450px) {
+  header {
+    margin: 15px 25px;
+    font-size: 1.25rem;
+  }
+  #drum-machine {
+    -ms-grid-columns: 10% 80% 10%;
+        grid-template-columns: 10% 80% 10%;
+  }
 }

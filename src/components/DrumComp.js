@@ -170,12 +170,12 @@ class DrumController extends React.Component {
   render() {
     return (
       <div id="drum-machine">
-        <DisplayComp display={this.state.display} />
-        <PadBankComp display={this.display} volume={this.state.volume} />
+        <DisplayComp display={this.state.display} />{" "}
         <ControlComp
           volume={this.state.volume}
           adjustVolume={this.adjustVolume}
         />
+        <PadBankComp display={this.display} volume={this.state.volume} />
       </div>
     );
   }
